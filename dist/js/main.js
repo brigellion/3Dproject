@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("I am one.js"),console.log("I am two.js")})();
