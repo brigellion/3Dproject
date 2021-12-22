@@ -9,7 +9,7 @@ const remain = document.getElementById('remain');
 
 const calendar = () => {
     const showDay = (day) => {
-        var days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
         return days[day];
     };
     const getValues = () => {
@@ -31,7 +31,7 @@ const calendar = () => {
 
         return { days, today, time, hour };
     };
-    const updateClock = () => {
+    function updateClock() {
         let getTime = getValues();
         switch (true) {
             case getTime.hour < 3 || getTime.hour >= 23:
@@ -50,7 +50,10 @@ const calendar = () => {
         time.textContent = getTime.time;
         today.textContent = `Сегодня: ${getTime.today}`;
         remain.textContent = `До нового года осталось ${getTime.days} дней`;
-    };
+        if (getTime.timeRemaining < 0) {
+            clearInterval(interval);
+        }
+    }
     let interval = setInterval(updateClock, 1000);
 };
 

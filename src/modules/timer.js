@@ -23,7 +23,7 @@ const timer = (deadline) => {
         }
     };
 
-    const updateClock = () => {
+    function updateClock() {
         let getTime = getTimeRemaining();
         if (getTime.seconds > 0) {
             timerDays.textContent = getTime.days;
