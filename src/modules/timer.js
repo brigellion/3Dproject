@@ -35,6 +35,7 @@ const timer = (deadline) => {
             }
         }
     };
+    updateClock();
     let iterval = setInterval(updateClock, 1000);
 };
 
