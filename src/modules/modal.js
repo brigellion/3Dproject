@@ -11,6 +11,9 @@ const modal = () => {
         opacity += 0.02;
         modal.style.display = 'block';
         modal.style.opacity = opacity;
+        if (opacity > 1) {
+            cancelAnimationFrame(idAnimation);
+        }
     };
     if (document.documentElement.clientWidth < 768) {
         buttons.forEach(btn => {

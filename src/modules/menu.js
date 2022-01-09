@@ -8,6 +8,7 @@ const menu = () => {
 
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
+        console.log('close');
     };
 
     menuBtn.addEventListener('click', handleMenu);
