@@ -6,9 +6,9 @@ const menu = () => {
     const butScroll = document.querySelector('[href="#service-block"]');
     console.log(butScroll);
 
-    const handleMenu = () => {
+    const handleMenu = (e) => {
+        e.preventDefault();
         menu.classList.toggle('active-menu');
-        console.log('close');
     };
 
     menuBtn.addEventListener('click', handleMenu);
