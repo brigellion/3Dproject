@@ -7,8 +7,8 @@ const menu = () => {
     console.log(butScroll);
 
     const handleMenu = (e) => {
-        e.preventDefault();
         menu.classList.toggle('active-menu');
+        //e.preventDefault();
     };
 
     menuBtn.addEventListener('click', handleMenu);
