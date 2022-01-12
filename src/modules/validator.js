@@ -29,7 +29,7 @@ const validator = () => {
     const validationEmail = (e) => {
         console.log('email');
         e.preventDefault();
-        e.target.value = e.target.value.replace(/[^a-zA-Z\@\-\_\.\!\~\*\']/, '');
+        e.target.value = e.target.value.replace(/[^a-zA-Z0-9\@\-\_\.\!\~\*\']/, '');
     };
 
     const validationTel = (e) => {
