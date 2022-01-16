@@ -34,7 +34,6 @@ const menu = () => {
             }
         });
         if (e.target.closest('a') === butScroll) {
-
             let hash = butScroll.getAttribute('href');
             let target = document.querySelector(hash);
             target.scrollIntoView({
