@@ -10,5 +10,19 @@ menu();
 modal();
 validator();
 tabs();
-slider();
+
+
+const buildSlider = () => {
+    const sliderBlock = document.querySelector('.portfolio-content');
+    const slides = document.querySelectorAll('.portfolio-item');
+
+    if (!sliderBlock || slides.length == 0) {
+        return;
+    } else {
+        slider(sliderBlock, slides);
+    }
+};
+
+buildSlider();
+
 

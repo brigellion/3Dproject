@@ -1,6 +1,5 @@
 const validator = () => {
     const inputs = document.querySelector('.calc-block').querySelectorAll('input[type=text]');
-
     inputs.forEach(input => {
         input.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/\D+/, ''); //- только числа
