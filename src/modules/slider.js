@@ -4,7 +4,7 @@ const slider = (slider, slidesArray, slideActive = 'portfolio-item-active', dotA
     const slides = document.querySelectorAll(slidesArray);
 
     if (!sliderBlock || slides.length == 0) {
-        alert('Нет слайдера или слайдов');
+        console.warn('класс слайдера/слайдов не найден');
         return;
     }
 
