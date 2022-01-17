@@ -22,7 +22,7 @@ const slider = (slider, slidesArray, slideActive = 'portfolio-item-active', dotA
             }
             return document.querySelectorAll('.dot');
         } else {
-            alert('пустой слайдер');
+            console.warn('пустой слайдер');
             return;
         }
     };
