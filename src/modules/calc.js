@@ -1,3 +1,5 @@
+import { animate } from "./helpers";
+
 const calc = (price = 100) => {
     const calcBlock = document.querySelector('.calc-block');
     const calcType = document.querySelector('.calc-type');
@@ -5,32 +7,6 @@ const calc = (price = 100) => {
     const calcCount = document.querySelector('.calc-count');
     const calcDay = document.querySelector('.calc-day');
     const total = document.getElementById('total');
-
-    const runNum = (num, increment) => {
-        let interval = 0;
-        if (increment) {
-            let shift = Math.round((num - total.textContent) / 20);
-            interval = setInterval(() => {
-                if (+total.textContent + shift >= num) {
-                    total.textContent = num;
-                    clearInterval(interval);
-                } else {
-                    total.textContent = +total.textContent + shift;
-                }
-            }, 20);
-        } else {
-            let shift = Math.round((total.textContent - num) / 20);
-            interval = setInterval(() => {
-                if (+total.textContent - shift <= num) {
-                    total.textContent = num;
-                    clearInterval(interval);
-                } else {
-                    total.textContent = +total.textContent - shift;
-                }
-            }, 20);
-        }
-
-    };
 
     const countCalc = () => {
         const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
@@ -55,10 +31,30 @@ const calc = (price = 100) => {
             totalValue = 0;
         }
         if (totalValue > 0) {
+            let oldTotal = +total.textContent;
+
             if (total.textContent < totalValue) {
-                runNum(+totalValue, true);
+                let sub = totalValue - total.textContent;
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        total.textContent = oldTotal + Math.round(sub * progress);
+                    }
+                });
             } else {
-                runNum(+totalValue, false);
+                let sub = +total.textContent - totalValue;
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        total.textContent = oldTotal - Math.round(sub * progress);
+                    }
+                });
             }
         }
     };
