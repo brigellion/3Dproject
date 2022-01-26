@@ -45,14 +45,14 @@ const calc = (price = 100) => {
                     }
                 });
             } else {
-                let sub = +total.textContent - totalValue;
+                let subRev = +total.textContent - totalValue;
                 animate({
                     duration: 1000,
                     timing(timeFraction) {
                         return timeFraction;
                     },
                     draw(progress) {
-                        total.textContent = oldTotal - Math.round(sub * progress);
+                        total.textContent = oldTotal - Math.round(subRev * progress);
                     }
                 });
             }
