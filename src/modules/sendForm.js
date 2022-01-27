@@ -1,10 +1,9 @@
 const sendForm = ({ formId, someElem = [] }) => {
     const form = document.getElementById(formId);
     const statusBlock = document.createElement('div');
-    statusBlock.style.color = '#ffffff';
-    const loadText = 'Загрузка...';
     const errorText = 'Ошибка...';
     const successText = 'Спасибо! Наш менеджер с вами свяжется';
+    statusBlock.style.color = '#ffffff';
 
 
     const validate = (list) => {
@@ -51,9 +50,9 @@ const sendForm = ({ formId, someElem = [] }) => {
         const formData = new FormData(form);
         const formBody = {};
 
-        statusBlock.textContent = loadText;
+        statusBlock.textContent = '';
+        statusBlock.classList.add('sk-pulse');
         form.append(statusBlock);
-
 
         formData.forEach((val, key) => {
             formBody[key] = val;
@@ -71,16 +70,20 @@ const sendForm = ({ formId, someElem = [] }) => {
 
         if (validate(formElements)) {
             sendData(formBody).then(data => {
-                statusBlock.textContent = successText;
                 formElements.forEach(element => {
                     element.value = '';
                 });
+            }).then(data => {
+                statusBlock.classList.remove('sk-pulse');
+                statusBlock.textContent = successText;
             })
                 .catch(error => {
+                    statusBlock.classList.remove('sk-pulse');
                     statusBlock.textContent = errorText;
                 });
         } else {
             alert("Данные не валидны");
+            statusBlock.classList.remove('sk-pulse');
         }
     };
 
