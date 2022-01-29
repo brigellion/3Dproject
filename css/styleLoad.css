@@ -1,0 +1,50 @@
+:root {
+  --sk-size: 100px;
+  --sk-color: rgb(6, 56, 219);
+}
+
+
+/* Utility class for centering */
+.sk-center { margin: auto; }
+
+
+/*  Plane
+      <div class="sk-plane"></div>
+ */
+.sk-plane {
+  margin: auto;
+  flex: 1 1 25%;
+  width: var(--sk-size);
+  height: var(--sk-size);
+  background-color: var(--sk-color);
+  animation: sk-plane 1.2s infinite ease-in-out; 
+}
+
+@keyframes sk-plane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg); 
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); 
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); 
+  } 
+}
+
+.sk-pulse {
+  margin: auto;
+  flex: 1 1 25%;
+  width: var(--sk-size);
+  height: var(--sk-size);
+  background-color: var(--sk-color);
+  border-radius: 100%;
+  animation: sk-pulse 1.2s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955); 
+}
+
+@keyframes sk-pulse {
+  0% {
+    transform: scale(0); 
+  } 100% {
+    transform: scale(1);
+    opacity: 0; 
+  }
+}
