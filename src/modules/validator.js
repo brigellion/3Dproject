@@ -34,7 +34,7 @@ const validator = () => {
     const validationTel = (e) => {
         console.log('tel');
         e.preventDefault();
-        e.target.value = e.target.value.replace(/[^()-\d]/, '');
+        e.target.value = e.target.value.replace(/[^\+()-\d]/, '');
     };
 
     nameF1.addEventListener('input', validationName);

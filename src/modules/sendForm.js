@@ -11,22 +11,28 @@ const sendForm = ({ formId, someElem = [] }) => {
         let pattern;
         for (let i = 0; i < list.length; i++) {
             if (list[i].name === 'user_phone') {
-                pattern = /[^\d() \- +]/;
-                if (pattern.test(list[i].value)) {
+                pattern = /^\+?(?:[()-]*\d){4,11}[()-]*$/;
+                if (!pattern.test(list[i].value)) {
                     success = false;
                     break;
                 }
             }
             else if (list[i].name === 'user_name') {
-                pattern = /[^А-Яа-я\s]/;
-                if (pattern.test(list[i].value)) {
+                pattern = /^[а-яА-Я][а-яА-Я\s]{1,}$/;
+                if (!pattern.test(list[i].value)) {
                     success = false;
                     break;
                 }
             }
             else if (list[i].name === 'user_message') {
                 pattern = /[^А-Яа-я0-9\?\.\,\!\s]/;
-                if (pattern.test(list[i].value)) {
+                if (pattern.test(list[i].value) || list[i].value == '') {
+                    success = false;
+                    break;
+                }
+            }
+            else if (list[i].name === 'user_email') {
+                if (list[i].value == '') {
                     success = false;
                     break;
                 }
