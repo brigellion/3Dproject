@@ -25,7 +25,7 @@ const timer = (deadline) => {
 
     function updateClock() {
         let getTime = getTimeRemaining();
-        if (getTime.seconds > 0) {
+        if (getTime.seconds >= 0) {
             timerDays.textContent = getTime.days;
             timerHours.textContent = getZero(getTime.hours);
             timerMinutes.textContent = getZero(getTime.minutes);
@@ -36,7 +36,7 @@ const timer = (deadline) => {
         }
     };
     updateClock();
-    let iterval = setInterval(updateClock, 1000);
+    let iterval = setInterval(updateClock, 500);
 };
 
 export default timer;

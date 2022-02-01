@@ -20,19 +20,16 @@ const validator = () => {
     const messageF2 = document.getElementById('form2').querySelector('.mess');
 
     const validationName = (e) => {
-        console.log('name');
         e.preventDefault();
-        e.target.value = e.target.value.replace(/[^а-яА-Я -]/, '');
+        e.target.value = e.target.value.replace(/[^а-яА-ЯЁ-ё -]/, '');
     };
 
     const validationEmail = (e) => {
-        console.log('email');
         e.preventDefault();
         e.target.value = e.target.value.replace(/[^a-zA-Z0-9\@\-\_\.\!\~\*\']/, '');
     };
 
     const validationTel = (e) => {
-        console.log('tel');
         e.preventDefault();
         e.target.value = e.target.value.replace(/[^\+()-\d]/, '');
     };
