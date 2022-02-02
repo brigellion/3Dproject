@@ -6,6 +6,9 @@ const sendForm = ({ formId, someElem = [] }) => {
     const successText = 'Спасибо! Наш менеджер с вами свяжется';
     statusBlock.style.color = '#ffffff';
 
+
+
+
     const validate = (list) => {
         let success = true;
         let pattern;
@@ -20,6 +23,7 @@ const sendForm = ({ formId, someElem = [] }) => {
             else if (list[i].name === 'user_name') {
                 pattern = /^[а-яА-ЯЁ-ё][а-яА-ЯЁ-ё\s]{1,}$/;
                 if (!pattern.test(list[i].value)) {
+
                     success = false;
                     break;
                 }
@@ -115,7 +119,7 @@ const sendForm = ({ formId, someElem = [] }) => {
             }
 
         } else {
-            alert("Данные не валидны");
+            //alert("Данные не валидны");
             statusBlock.classList.remove('sk-pulse');
         }
     };
@@ -134,12 +138,3 @@ const sendForm = ({ formId, someElem = [] }) => {
 };
 
 export default sendForm;
-
-
-/*setTimeout(() => {
-    //Модальное окно после отправки данных закроется через 3 секунды.
-               form.removeChild(statusBlock);
-               if (modal.classList.contains('popup')) {
-                  modal.style.display = 'none';
-               }
-            }, 3000);*/
