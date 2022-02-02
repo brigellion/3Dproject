@@ -6,7 +6,12 @@ const sendForm = ({ formId, someElem = [] }) => {
     const successText = 'Спасибо! Наш менеджер с вами свяжется';
     statusBlock.style.color = '#ffffff';
 
-
+    function noValid(element) {
+        element.style.border = '2px solid red';
+        setTimeout(() => {
+            element.style.border = '';
+        }, 2000);
+    }
 
 
     const validate = (list) => {
@@ -16,6 +21,7 @@ const sendForm = ({ formId, someElem = [] }) => {
             if (list[i].name === 'user_phone') {
                 pattern = /^\+?(?:[()-]*\d){4,11}[()-]*$/;
                 if (!pattern.test(list[i].value)) {
+                    noValid(list[i]);
                     success = false;
                     break;
                 }
@@ -23,7 +29,7 @@ const sendForm = ({ formId, someElem = [] }) => {
             else if (list[i].name === 'user_name') {
                 pattern = /^[а-яА-ЯЁ-ё][а-яА-ЯЁ-ё\s]{1,}$/;
                 if (!pattern.test(list[i].value)) {
-
+                    noValid(list[i]);
                     success = false;
                     break;
                 }
@@ -31,12 +37,14 @@ const sendForm = ({ formId, someElem = [] }) => {
             else if (list[i].name === 'user_message') {
                 pattern = /[^А-Яа-я0-9\?\.\,\!\-\s]/;
                 if (pattern.test(list[i].value) || list[i].value == '') {
+                    noValid(list[i]);
                     success = false;
                     break;
                 }
             }
             else if (list[i].name === 'user_email') {
                 if (list[i].value == '') {
+                    noValid(list[i]);
                     success = false;
                     break;
                 }
@@ -119,7 +127,6 @@ const sendForm = ({ formId, someElem = [] }) => {
             }
 
         } else {
-            //alert("Данные не валидны");
             statusBlock.classList.remove('sk-pulse');
         }
     };
