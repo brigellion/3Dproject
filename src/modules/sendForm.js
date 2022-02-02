@@ -23,7 +23,8 @@ const sendForm = ({ formId, someElem = [] }) => {
             else if (list[i].name === 'user_name') {
                 pattern = /^[а-яА-ЯЁ-ё][а-яА-ЯЁ-ё\s]{1,}$/;
                 if (!pattern.test(list[i].value)) {
-
+                    const nameField = form.querySelector('.form-name');
+                    nameField.style.backgroundColor = '#000000';
                     success = false;
                     break;
                 }
